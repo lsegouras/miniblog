@@ -1,57 +1,89 @@
-import styles from "./Register.module.css"
-import { useState, useEffect } from 'react'
+import styles from "./Register.module.css";
+
+import { useEffect, useState } from "react";
 
 const Register = () => {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [confirmPassword, setConfirmPassword] = useState("")
-  const [error, setError] = useState("")
-  
-  const handleSubmit = (e) => {
-    e.prevent.default()
+  const [displayName, setDisplayName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
 
-    setError("")
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setError("");
 
     const user = {
-      name,
+      displayName,
       email,
-      password
-    }
+      password,
+    };
 
     if (password !== confirmPassword) {
-      setError("Passwords must match!")
+      setError("Passwords must match");
       return;
     }
 
+    //const res = await createUser(user);
+
     console.log(user);
-  }
-  
+  };
+
   return (
     <div className={styles.register}>
       <h1>Register to Post</h1>
-      <p>Create your username and share your stories! </p>
+      <p>Create your username and share your stories</p>
       <form onSubmit={handleSubmit}>
         <label>
-          <span>Name: </span>
-          <input type="text" name="name" required placeholder="Username" value={name} onChange={(e)=> setName(e.target.value)}></input> 
+          <span>Name:</span>
+          <input
+            type="text"
+            name="displayName"
+            required
+            placeholder="Username"
+            onChange={(e) => setDisplayName(e.target.value)}
+            value={displayName}
+          />
         </label>
         <label>
-          <span>Email: </span>
-          <input type="email" name="email" required placeholder="Email" value={email} onChange={(e)=> setEmail(e.target.value)}></input> 
+          <span>E-mail:</span>
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="E-mail"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
         </label>
         <label>
-          <span>Password: </span>
-          <input type="password" name="password" required placeholder="Password" value={password} onChange={(e)=> setPassword(e.target.value)}></input> 
+          <span>Password:</span>
+          <input
+            type="password"
+            name="password"
+            required
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
         </label>
         <label>
-          <span>Confirm Password: </span>
-          <input type="password" name="confirmPassword" required placeholder="Confirm Password" value={confirmPassword} onChange={(e)=> setConfirmPassword(e.target.value)}></input> 
+          <span>Confirm Password:</span>
+          <input
+            type="password"
+            name="confirmPassword"
+            required
+            placeholder="Confirm Password"
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            value={confirmPassword}
+          />
         </label>
         <button className="btn">Register</button>
+        {error && <p className="error">{error}</p>}
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;
