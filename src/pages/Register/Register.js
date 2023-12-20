@@ -34,7 +34,7 @@ const Register = () => {
       <form onSubmit={handleSubmit}>
         <label>
           <span>Name: </span>
-          <input type="text" name="name" required placeholder="User Name" value={name} onChange={(e)=> setName(e.target.value)}></input> 
+          <input type="text" name="name" required placeholder="Username" value={name} onChange={(e)=> setName(e.target.value)}></input> 
         </label>
         <label>
           <span>Email: </span>
@@ -48,7 +48,7 @@ const Register = () => {
           <span>Confirm Password: </span>
           <input type="password" name="confirmPassword" required placeholder="Confirm Password" value={confirmPassword} onChange={(e)=> setConfirmPassword(e.target.value)}></input> 
         </label>
-        <label className="btn">Register</label>
+        <button className="btn">Register</button>
       </form>
     </div>
   )
