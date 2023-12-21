@@ -6,11 +6,12 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
-
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
   return (
     <div className="App">
+      <AuthProvider>
       <BrowserRouter>
         <Navbar />
         <div className="container">
@@ -23,6 +24,7 @@ function App() {
         </div>
         <Footer />
       </BrowserRouter >
+    </AuthProvider>
     </div>
   );
 }
