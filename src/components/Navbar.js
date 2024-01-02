@@ -71,7 +71,7 @@ function Navbar() {
         </li>
         {user && (
           <li>
-            <button onClick={logout}>Leave</button>
+            <button onClick={logout}>Logout</button>
           </li>
         )}
       </ul>
